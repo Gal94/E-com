@@ -4,32 +4,32 @@ import MenuItem from "../menu-item/menuitem.component";
 const sections = [
     {
         title: 'hats',
-        imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
+        img: 'https://i.ibb.co/cvpntL1/hats.png',
         id: 1,
         linkUrl: 'shop/hats'
     },
     {
         title: 'jackets',
-        imageUrl: 'https://i.ibb.co/px2tCc3/jackets.png',
+        img: 'https://i.ibb.co/px2tCc3/jackets.png',
         id: 2,
         linkUrl: 'shop/jackets'
     },
     {
         title: 'sneakers',
-        imageUrl: 'https://i.ibb.co/0jqHpnp/sneakers.png',
+        img: 'https://i.ibb.co/0jqHpnp/sneakers.png',
         id: 3,
         linkUrl: 'shop/sneakers'
     },
     {
         title: 'womens',
-        imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
+        img: 'https://i.ibb.co/GCCdy8t/womens.png',
         size: 'large',
         id: 4,
         linkUrl: 'shop/womens'
     },
     {
         title: 'mens',
-        imageUrl: 'https://i.ibb.co/R70vBrQ/men.png',
+        img: 'https://i.ibb.co/R70vBrQ/men.png',
         size: 'large',
         id: 5,
         linkUrl: 'shop/mens'
@@ -46,8 +46,8 @@ class Directory extends Component {
         }
     }
     render(){
-        const items = this.state.sections.map(({title, imageUrl, id, size}) => (
-                    <MenuItem key={id} title={title} img={imageUrl} size={size}/> ));
+        const items = this.state.sections.map(({id, ...otherSectionProps}) => ( //destruct all props
+                    <MenuItem key={id} {...otherSectionProps}/> )); //spread props
         return(
             <div className='directory-menu'>
                 {items}
