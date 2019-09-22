@@ -1,41 +1,7 @@
 import './directory.styles.scss';
 import React, {Component} from 'react';
 import MenuItem from "../menu-item/menuitem.component";
-const sections = [
-    {
-        title: 'hats',
-        img: 'https://i.ibb.co/cvpntL1/hats.png',
-        id: 1,
-        linkUrl: 'shop/hats'
-    },
-    {
-        title: 'jackets',
-        img: 'https://i.ibb.co/px2tCc3/jackets.png',
-        id: 2,
-        linkUrl: 'shop/jackets'
-    },
-    {
-        title: 'sneakers',
-        img: 'https://i.ibb.co/0jqHpnp/sneakers.png',
-        id: 3,
-        linkUrl: 'shop/sneakers'
-    },
-    {
-        title: 'womens',
-        img: 'https://i.ibb.co/GCCdy8t/womens.png',
-        size: 'large',
-        id: 4,
-        linkUrl: 'shop/womens'
-    },
-    {
-        title: 'mens',
-        img: 'https://i.ibb.co/R70vBrQ/men.png',
-        size: 'large',
-        id: 5,
-        linkUrl: 'shop/mens'
-    }
-];
-
+import { sections } from "./sections";
 
 
 class Directory extends Component {
@@ -45,7 +11,7 @@ class Directory extends Component {
             sections: sections
         }
     }
-    render(){
+    render(){ // if a section has a size parameter it will spread if, if not will ignore.
         const items = this.state.sections.map(({id, ...otherSectionProps}) => ( //destruct all props
                     <MenuItem key={id} {...otherSectionProps}/> )); //spread props
         return(
