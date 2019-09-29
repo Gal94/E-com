@@ -23,12 +23,13 @@
 
   &.google-sign-in {
     background-color: #4285f4;
+    border: 1px solid #4285f4;
     color: white;
-    transition: 3000ms ease all;
+    transition: 300ms ease all;
 
     &:hover {
-      background-color: white;//#357ae8;
-      border: 1px solid white;
+      background-color: #357ae8;
+      border: 1px solid #357ae8;
     }
   }
 }
