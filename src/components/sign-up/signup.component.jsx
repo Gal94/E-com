@@ -25,7 +25,7 @@ class SignUp extends Component {
             return;
         }
         try {
-            //also assigns the UID automatically
+            //also assigns UID automatically
             const { user } = await auth.createUserWithEmailAndPassword(email, password);
             await createUserProfileDocument(user, {displayName});
 
