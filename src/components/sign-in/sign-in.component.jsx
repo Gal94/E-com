@@ -18,7 +18,7 @@ class SignIn extends Component {
         event.preventDefault();
         const {email, password} = this.state;
         try {
-            await auth.signInWithEmailAndPassword(email, password);
+            await auth.signInWithEmailAndPassword(email, password); //triggers onAuthStateChange in app.js
             //clear the form if managed to log in
             this.setState({email: '', password: ''});
         } catch (error) {
@@ -58,8 +58,8 @@ class SignIn extends Component {
                         required
                     />
                     <div className='buttons'>
-                    <CustomButton type="submit">Sign In</CustomButton>
-                    <CustomButton onClick={signInWithGoogle} isGoogleSignIn>{' '}Sign In With Google{' '}</CustomButton>
+                        <CustomButton type="submit">Sign In</CustomButton>
+                        <CustomButton type='button' onClick={signInWithGoogle} isGoogleSignIn>Sign In With Google</CustomButton>
                     </div>
                 </form>
             </div>

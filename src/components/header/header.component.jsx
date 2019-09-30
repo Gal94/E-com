@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ReactComponent as Logo}  from '../../assets/crown.svg'
 import './header.component.scss';
 import {auth} from "../../firebase/firebase.utils";
+import { connect } from 'react-redux'; //allows us to make our component have attributes related to redux
 
 
 const Header = ({currentUser}) => (
@@ -22,5 +23,9 @@ const Header = ({currentUser}) => (
         </div>
     </div>
 );
-
-export default Header;
+//state is the rootReducer taken from the store
+const mapStateToProps = (state) => ({
+    currentUser: state.user.currentUser //we want the currentUser value from the user reducer
+});
+//connect connects into the store, giving me the state(rootReducer) object
+export default connect(mapStateToProps)(Header);
