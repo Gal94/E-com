@@ -1,3 +1,4 @@
+import {UserActionTypes} from "./user.types";
 const INITIAL_STATE = {
     currentUser: null
 };
@@ -6,7 +7,7 @@ const INITIAL_STATE = {
 const userReducer = (currentState = INITIAL_STATE, action) => {
     //every reducer gets every single action even if it's not related to that reducer
     switch (action.type){
-        case 'SET_CURRENT_USER':
+        case UserActionTypes.SET_CURRENT_USER:
             return { //edit only the data relevant for that action
                 ...currentState,
                 currentUser: action.payload
