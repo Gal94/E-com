@@ -4,3 +4,9 @@ import {CartActionTypes} from "./cart.types";
 export const toggleCartHidden = ()=> ({
     type: CartActionTypes.TOGGLE_CART_HIDDEN
 });
+
+//takes an item object, and assigns it to the payload key
+export const addItem = (item) => ({
+    type: CartActionTypes.ADD_ITEM,
+    payload: item
+});
