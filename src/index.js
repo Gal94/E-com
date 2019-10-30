@@ -5,13 +5,15 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter} from "react-router-dom"; //gives the components wrapped around it routing capabilities
 import {Provider } from 'react-redux'; //parent of everything inside the application, thus allows us to get access to all of the things stored on it anywhere
-import store from "./redux/store";
-
+import { store, persistor } from './redux/store';
+import { PersistGate } from 'redux-persist/integration/react';
 
 ReactDOM.render(
     <Provider store={store}>
      <BrowserRouter>
-        <App />
+         <PersistGate persistor={persistor}>
+            <App />
+         </PersistGate>
      </BrowserRouter>
     </Provider>, document.getElementById('root'));
 
