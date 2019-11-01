@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import FormInput from "../form-input/form-input.component";
-import './sign-in.styles.scss';
 import CustomButton from "../costum-button/custom-button.component";
 import { auth, signInWithGoogle} from "../../firebase/firebase.utils";
+
+import { SignInContainer, Title, ButtonsContainer } from "./sign-in.styles";
 
 class SignIn extends Component {
     constructor(props) {
@@ -33,13 +34,12 @@ class SignIn extends Component {
 
     render() {
         return (
-            <div className='sign-in'>
-                <h2 className='title'>Login to your account</h2>
+            <SignInContainer>
+                <Title>Login to your account</Title>
                 {/* <span>Sign in with your email and password</span> */}
 
-                <form className="group" onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit}>
                     <FormInput
-                        className="form-input"
                         id="edName"
                         name="email"
                         type="email"
@@ -49,7 +49,6 @@ class SignIn extends Component {
                         required
                     />
                     <FormInput
-                        className="form-input"
                         type="password"
                         name="password"
                         value={this.state.password}
@@ -57,12 +56,12 @@ class SignIn extends Component {
                         handleChange={this.handleChange}
                         required
                     />
-                    <div className='buttons'>
+                    <ButtonsContainer>
                         <CustomButton type="submit">Sign In</CustomButton>
                         <CustomButton type='button' onClick={signInWithGoogle} isGoogleSignIn>Sign In With Google</CustomButton>
-                    </div>
+                    </ButtonsContainer>
                 </form>
-            </div>
+            </SignInContainer>
         )
     }
 }

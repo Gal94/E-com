@@ -1,20 +1,24 @@
-$sub-color: grey;
-$main-color: black;
+import styled, { css } from "styled-components";
 
-//everywhere we say @include apply that, reusable piece of css
+const subColor = 'grey';
+const mainColor = 'black';
 
-//add a transition for the label to go above the input
-@mixin shrinkLabel {
+const shrinkLabelStyles = css`
   top: -14px;
   font-size: 12px;
-  color: $main-color;
-}
+  color: ${mainColor};
+`;
 
-.group {
+export const GroupContainer = styled.div`
   position: relative;
   margin: 45px 0;
+  
+  input[type='password'] {
+    letter-spacing: 0.3em;
+  }
+`;
 
-  .form-input {
+export const FormInputContainer = styled.input`
     background: none;
     background-color: white;
     color: $sub-color;
@@ -24,24 +28,21 @@ $main-color: black;
     width: 100%;
     border: none;
     border-radius: 0;
-    border-bottom: 1px solid $sub-color;
+    border-bottom: 1px solid ${subColor};
     margin: 25px 0;
 
     &:focus {
       outline: none;
     }
-
-    &:focus ~ .form-input-label {
-      @include shrinkLabel();
+    
+    &:focus ~ label {
+        ${shrinkLabelStyles}
     }
-  }
 
-  input[type='password'] {
-    letter-spacing: 0.3em;
-  }
+`;
 
-  .form-input-label {
-    color: $sub-color;
+export const InputLabel = styled.label`
+    color: ${subColor};
     font-size: 16px;
     font-weight: normal;
     position: absolute;
@@ -49,9 +50,8 @@ $main-color: black;
     left: 5px;
     top: 10px;
     transition: 500ms ease all;
-
+    
     &.shrink {
-      @include shrinkLabel();
+        ${shrinkLabelStyles}
     }
-  }
-}
+`;

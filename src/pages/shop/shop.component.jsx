@@ -5,7 +5,7 @@ import CollectionPage from "../category/collection.component";
 import CollectionsOverview from "../../components/collections-overview/collections-overview.component";
 const ShopPage = ({ match }) =>{ //route autmatically passes route, match, history
     return (
-        <div className='shop-page'>
+        <div>
             <Route exact path ={`${match.path}`} component={CollectionsOverview}/>
             <Route path ={`${match.path}/:collectionId`} component={CollectionPage}/>
            </div>

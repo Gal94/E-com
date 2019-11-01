@@ -1,4 +1,4 @@
-import './directory.styles.scss';
+import { DirectoryMenuContainer } from "./directory.styles";
 import React from 'react';
 import MenuItem from "../menu-item/menuitem.component";
 import { connect } from 'react-redux';
@@ -10,9 +10,9 @@ const Directory = ({ sections }) => {
         const items = sections.map(({id, ...otherSectionProps}) => ( //destruct all props
                     <MenuItem key={id} {...otherSectionProps}/> )); //spread props
         return(
-            <div className='directory-menu'>
+            <DirectoryMenuContainer>
                 {items}
-            </div>
+            </DirectoryMenuContainer>
         )
 };
 
