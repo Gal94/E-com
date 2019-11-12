@@ -7,20 +7,19 @@ import Header from "./components/header/header.component";
 import SignInAndSignUpPage from "./pages/sign-in-and-sign-up/sign-in-and-sign-up.component";
 import CheckoutPage from "./pages/checkout/checkout.component";
 
-import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
+import { auth, createUserProfileDocument, addCollectionAndDocuments } from "./firebase/firebase.utils";
 import { connect } from 'react-redux';
 import { setCurrentUser } from "./redux/user/user.actions";
 import { createStructuredSelector} from "reselect";
 import { selectCurrentUser } from "./redux/user/user.selectors";
-
-
+import {selectCollectionsForPreview} from "./redux/shop/shop.selectors";
 
 class App extends React.Component {
     unsubscribeFromAuth = null;
 
     //acts as an observer for when users log in using the google AUTH
     componentDidMount(){
-        const {setCurrentUser} = this.props;
+        const {setCurrentUser, collectionsArray} = this.props;
 
         // onAuthStateChanged acts as an observer for when auth state changes
         this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
@@ -38,6 +37,7 @@ class App extends React.Component {
             } else { //user has not logged in
                 setCurrentUser(userAuth); //which is null in this case
             }
+            //await addCollectionAndDocuments('collections', collectionsArray.map(({title, items})=>({title, items})))
         });
     }
 
@@ -67,7 +67,8 @@ const mapDispatchToProps = dispatch => ({
 
 //prop refers to rootReducer.user.currentUser
 const mapStateToProps = createStructuredSelector({
-    currentUser: selectCurrentUser
+    currentUser: selectCurrentUser,
+    collectionsArray: selectCollectionsForPreview
 });
 
 //pass null because we don't need state to props here
